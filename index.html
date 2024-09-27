@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de projet web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e0e0e0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 10px;
+        }
+
+        .container {
+            background-color: #f0f0f0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 20px;
+        }
+
+        label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #cccccc;
+            background-color: #e9e9e9;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #77b3a2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        button {
+            padding: 15px;
+            background-color: #77b3a2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5a9381;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            input, textarea, button {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+            input, textarea, button {
+                font-size: 0.8rem;
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Formulaire de projet web</h1>
+    <form id="contact-form">
+        <label for="email">Adresse e-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="organisation">Nom de votre entreprise ou organisation</label>
+        <input type="text" id="organisation" name="organisation" required>
+
+        <label for="objectif_principal">Quel est l'objectif principal de votre site web ?</label>
+        <textarea id="objectif_principal" name="objectif_principal" required></textarea>
+
+        <label for="fonctionnalites">Quelles fonctionnalités spécifiques souhaitez-vous sur votre site ?</label>
+        <textarea id="fonctionnalites" name="fonctionnalites" required></textarea>
+
+        <label for="design_preferences">Avez-vous des préférences en termes de design ?</label>
+        <textarea id="design_preferences" name="design_preferences"></textarea>
+
+        <label for="exemples_sites">Avez-vous des exemples de sites que vous aimez ? (veuillez fournir les URLs)</label>
+        <textarea id="exemples_sites" name="exemples_sites"></textarea>
+
+        <label for="public_cible">Décrivez votre public cible (âge, sexe, intérêts, etc.)</label>
+        <textarea id="public_cible" name="public_cible"></textarea>
+
+        <label for="contenu">Avez-vous du contenu prêt pour le site ? (textes, images, vidéos)</label>
+        <textarea id="contenu" name="contenu"></textarea>
+
+        <label for="pages_souhaitees">Quelles pages souhaitez-vous inclure sur votre site ? (Accueil, Contact, À propos, Services, etc.)</label>
+        <textarea id="pages_souhaitees" name="pages_souhaitees" required></textarea>
+
+        <label for="budget">Quel est votre budget pour ce projet ?</label>
+        <input type="text" id="budget" name="budget" required>
+
+        <label for="delai">Quel est votre délai pour la réalisation du site ?</label>
+        <input type="text" id="delai" name="delai" required>
+
+        <button type="submit">Envoyer</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init('service_y9tik8m'); // Remplacez par votre User ID EmailJS
+    })();
+
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page
+
+        // Récupérer les données du formulaire
+        emailjs.sendForm('service_y9tik8m', 'template_60ujqrl', this)
+            .then(function() {
+                alert('Message envoyé avec succès !');
+            }, function(error) {
+                alert('Erreur lors de l\'envoi : ' + JSON.stringify(error));
+            });
+    });
+</script>
+
+</body>
+</html>
