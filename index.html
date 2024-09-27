@@ -155,13 +155,13 @@
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 <script>
     (function() {
-        emailjs.init('service_y9tik8m'); // Remplacez par votre User ID EmailJS
+        emailjs.init('p0V0ACB7dyVICLle9'); // Votre Public Key EmailJS
     })();
 
     document.getElementById('contact-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Empêche le rechargement de la page
 
-        // Récupérer les données du formulaire
+        // Récupérer les données du formulaire et les envoyer via EmailJS
         emailjs.sendForm('service_y9tik8m', 'template_60ujqrl', this)
             .then(function() {
                 alert('Message envoyé avec succès !');
